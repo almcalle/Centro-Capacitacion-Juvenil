@@ -3,11 +3,11 @@
 ?>
 	<div class="login-box">
       <div class="login-logo">
-      <p>Clinica</p>
-      <p>Santa Teresa</p>
+      <p>Centro de Capacitación Juvenil</p>
+      <!-- <p>Santa Teresa</p> -->
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Clinica medica iniciar sesión</p>
+        <p class="login-box-msg">Iniciar Sesión</p>
         <form method="post" action="php/validar-usuario.php">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" name="usuario" value="" required="required" maxlength="8" placeholder="Usuario"/>
