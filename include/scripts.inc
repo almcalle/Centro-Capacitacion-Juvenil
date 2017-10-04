@@ -11,3 +11,8 @@
     <!-- <script src="js/mijava.js" type="text/javascript"></script> -->
     <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
     <!-- <script src="js/dataTables.bootstrap.js" type="text/javascript"></script> -->
+    <!-- cabecera añadida para el select2 -->
+    <link href="plugins/select2.min.css" rel="stylesheet" />
+    <script src="plugins/select2.min.js"></script>
+    <!--      -->
+  

@@ -86,7 +86,7 @@ include 'include/head.inc';
 
               <div class="form-group">
 	    					<label for="proyecto_actual">* Proyecto donde colabora</label>
-                <select name="proyecto_actual" class="form-control">
+                <select multiple name="proyecto_actual[]" class="form-control">
                   <option>Becas San Miguel</option>
                   <option>Centros Infantiles</option>
                   <option>Administración</option>
@@ -117,6 +117,60 @@ include 'include/head.inc';
                   <option>San José</option>
                 </select>
               </div>
+
+
+              <!--                  -->
+              <div class="form-group">
+                <label for="proyecto_actual">* Proyecto donde colabora</label>
+                <form action ="/action_page.php" method ="get">
+<input type="checkbox" name="proyecto_actual" value="BecasSanMiguel"> Becas san Miguel<br>
+ <input type="checkbox" name="proyecto_actual" value="CentrosInfantiles" checked> Centros Infantiles<br>
+ <input type="checkbox" name="proyecto_actual" value="Administración"> Administración<br>
+<input type="checkbox" name="proyecto_actual" value="Fiscalia" checked> Fiscalia<br>
+<input type="checkbox" name="proyecto_actual" value="BecasSanMiguel"> Becas san Miguel<br>
+<input type="checkbox" name="proyecto_actual" value="CentrosInfantiles" checked> Centros Infantiles<br>
+
+</form>
+
+
+          <!--            <select multiple name="proyecto_actual[]" class="form-control">
+                  <option>Becas San Miguel</option>
+                  <option>Centros Infantiles</option>
+                  <option>Administración</option>
+                  <option>Fiscalia</option>
+                  <option>Maestro en Casa</option>
+                  <option>Populorum</option>
+                  <option>Seguimiento</option>
+                  <option>Mantenimiento</option>
+                  <option>Capacitaciones</option>
+                  <option>Informática</option>
+                  <option>Voluntarios extranjeros</option>
+                  <option>Santa Mónica</option>
+                  <option>San Francisco</option>
+                  <option>La Isla</option>
+                  <option>La Bolsa</option>
+                  <option>Becas</option>
+                  <option>Centros Infantiles Ancianos</option>
+                  <option>Productividad</option>
+                  <option>Cuenta de ayuda</option>
+                  <option>Escuela nocturna</option>
+                  <option>Catéquesis</option>
+                  <option>Psicología</option>
+                  <option>Ancianos</option>
+                  <option>Mochilas</option>
+                  <option>Música</option>
+                  <option>San Francisco de Asís</option>
+                  <option>San Cristobal</option>
+                  <option>San José</option>
+                </select>
+              </div>
+
+                                 -->
+
+
+
+
+
 
               <div class="form-group">
 	    					<label for="proyectos_pasados">* Proyectos donde ha colaborado</label>
