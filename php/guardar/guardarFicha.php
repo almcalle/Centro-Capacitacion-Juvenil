@@ -2,8 +2,9 @@
 	$identidad = $_POST["identidad"];
 	$nombre = $_POST["nombre"];
 	$fecha_nacimiento = $_POST["fecha_nacimiento"];
-	$edad = $_POST["edad"];
-	$lugarNacimiento = $_POST["lugarNacimiento"];
+	<!-- Aunque iría edad, la elimino porque cuando cumpla años el dato deja de ser util
+	-->
+	$lugar_nacimiento = $_POST["lugar_nacimiento"];
 	$sexo = $_POST["sexo"];
 	$direccion = $_POST["direccion"];
 	$proyecto_actual = $_POST["proyecto_actual"];
@@ -13,6 +14,32 @@
 	$grupo = $_POST["grupo"];
 	$hijos = $_POST["hijos"];
 	$numero_hijos = $_POST["numero_hijos"];
+	$nivel = $_POST["nivel"];
+	$centro_educativo = $_POST["centro_educativo"];
+	$cuenta = $_POST["cuenta"];
+	$carrera = $_POST["carrera"];
+	$inicio_carrera = $_POST["inicio_carrera"];
+	$promedio_inicial = $_POST["promedio_inicial"];
+	$sangre = $_POST["sangre"];
+	$peso = $_POST["peso"];
+	$enfermedades = $_POST["enfermedades"];
+	$medicamentos = $_POST["medicamentos"];
+	$operaciones = $_POST["operaciones"];
+	$nombre_madre = $_POST["nombre_madre"];
+	$telefono_madre = $_POST["telefono_madre"];
+	$ocupacion_madre = $_POST["ocupacion_madre"];
+	$categoria_madre = $_POST["categoria_madre"];
+	$nombre_padre = $_POST["nombre_padre"];
+	$telefono_padre = $_POST["telefono_padre"];
+	$ocupacion_padre = $_POST["ocupacion_padre"];
+	$categoria_padre = $_POST["categoria_padre"];
+	$vive_padres = $_POST["vive_padres"];
+	$encargado = $_POST["encargado"];
+	$numero_hermanos= $_POST["numero_hermanos"];
+	$lugar_que_ocupa = $_POST["lugar_que_ocupa"];
+	$tipo_vivienda = $_POST["tipo_vivienda"];
+	$piso_de = $_POST["piso_de"];
+	$religion = $_POST["religion"];
 	// $imagen_portada = $_FILES['imagen']['name'];
 	$d=mt_rand(1,10000);
 if (isset($_POST['identidad']) and isset($_POST['nombre'])) {
@@ -23,10 +50,20 @@ if (isset($_POST['identidad']) and isset($_POST['nombre'])) {
 		$id = mysql_num_rows($consulta);
 		if ($id==0){
 
-			mysqli_query("insert into ficha(identidad,nombre,fecha_nacimiento,edad,lugarNacimiento,
-			sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos)
-			values('".$identidad."','".$nombre."','".$fecha."','".$edad."','".$fecha_nacimiento."','".$edad."','".$lugarNacimiento."','".$sexo."','".$direccion."','".$proyecto_actual."','".$proyectos_pasados."','".$telefono."','".$categoria."','".$grupo."',
-			'".$hijos."','".$numero_hijos."'")or die(mysql_error());
+			mysqli_query("insert into ficha(identidad,nombre,fecha_nacimiento,lugar_nacimiento,
+			sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos,nivel,
+			centro_educativo,cuenta,carrera,inicio_carrera,promedio_inicial,sangre,peso,enfermedades,medicamentos,
+			operaciones,nombre_madre,telefono_madre,ocupacion_madre,categoria_madre,nombre_padre,telefono_padre,
+			ocupacion_padre,categoria_padre,vive_padres,encargado,numero_hermanos,lugar_que_ocupa,tipo_vivienda,
+			piso_de,religion)
+			values('".$identidad."','".$nombre."','".$fecha_nacimiento."','".$lugar_nacimiento."','".$sexo."',
+			'".$direccion."','".$proyecto_actual."','".$proyectos_pasados."','".$telefono."','".$categoria."',
+			'".$grupo."','".$hijos."','".$numero_hijos."','".$nivel."'','".$centro_educativo."','".$cuenta."',
+			'".$carrera."','".$inicio_carrera."','".$promedio_inicial."','".$sangre."','".$peso."',
+			'".$enfermedades."','".$medicamentos."','".$operaciones."','".$nombre_madre."','".$telefono_madre."',
+			'".$ocupacion_madre."','".$categoria_madre."','".$nombre_padre."','".$telefono_padre."',
+			'".$ocupacion_padre."','".$categoria_padre."','".$vive_padres."','".$encargado."','".$numero_hermanos."',
+			'".$lugar_que_ocupa."','".$tipo_vivienda."','".$piso_de."','".$religion."')")or die(mysql_error());
 			echo '<script type="text/javascript">alert("Ficha Guardada");</script>';
 			echo "<script>window.location = '../detalleFicha.php?id=".$identidad."'</script>";
 		}

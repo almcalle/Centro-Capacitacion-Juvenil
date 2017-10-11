@@ -97,8 +97,8 @@ include 'include/head.inc';
                 <input readonly="readonly" type="number" min="1" max="99" required="required" id="edad" name="edad" class="form-control"/>
               </div>
               <div class="form-group">
-                <label for="lugarNacimiento">* Lugar de Nacimiento</label>
-                <input type="text" maxlength="39"  required="required" name="lugarNacimiento" class="form-control" />
+                <label for="lugar_nacimiento">* Lugar de Nacimiento</label>
+                <input type="text" maxlength="39"  required="required" name="lugar_nacimiento" class="form-control" />
               </div>
 
               <div class="form-group">
@@ -243,8 +243,8 @@ include 'include/head.inc';
 
 
                 <div class="form-group">
-                  <label for="categoria">* Nivel</label>
-                  <select name="categoria" required="required" class="form-control select2">
+                  <label for="nivel">* Nivel</label>
+                  <select name="nivel" required="required" class="form-control select2">
                     <option selected="selected">
                     <option>Ninguno</option>
                     <option>Primaria</option>
@@ -302,8 +302,8 @@ include 'include/head.inc';
             <div class="box-body">
 
               <div class="form-group">
-                <label for="categoria"> Tipo de Sangre</label>
-                <select name="categoria" class="form-control select2">
+                <label for="sangre"> Tipo de Sangre</label>
+                <select name="sangre" class="form-control select2">
                   <option selected="selected">
                   <option>A+</option>
                   <option>A-</option>
@@ -454,7 +454,7 @@ include 'include/head.inc';
 
             <div class="form-group">
               <label for="piso_de"> Piso de </label>
-              <select name="tipo_vivienda"  class="form-control select2">
+              <select name="piso_de"  class="form-control select2">
                 <option selected="selected">
                 <option>Tierra</option>
                 <option>Cemento</option>
