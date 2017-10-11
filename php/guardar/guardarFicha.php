@@ -23,7 +23,10 @@ if (isset($_POST['identidad']) and isset($_POST['nombre'])) {
 		$id = mysql_num_rows($consulta);
 		if ($id==0){
 
-			mysqli_query("insert into ficha(identidad,nombre,fecha_nacimiento,edad,lugarNacimiento,sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos) values('".$identidad."','".$nombre."','".$fecha."','".$edad."','".$fecha_nacimiento."','".$edad."','".$lugarNacimiento."','".$sexo."','".$direccion."','".$proyecto_actual."','".$proyectos_pasados."','".$telefono."','".$categoria."','".$grupo."','".$hijos."','".$numero_hijos."'") or die(mysql_error());
+			mysqli_query("insert into ficha(identidad,nombre,fecha_nacimiento,edad,lugarNacimiento,
+			sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos)
+			values('".$identidad."','".$nombre."','".$fecha."','".$edad."','".$fecha_nacimiento."','".$edad."','".$lugarNacimiento."','".$sexo."','".$direccion."','".$proyecto_actual."','".$proyectos_pasados."','".$telefono."','".$categoria."','".$grupo."',
+			'".$hijos."','".$numero_hijos."'")or die(mysql_error());
 			echo '<script type="text/javascript">alert("Ficha Guardada");</script>';
 			echo "<script>window.location = '../detalleFicha.php?id=".$identidad."'</script>";
 		}
