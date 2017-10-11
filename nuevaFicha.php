@@ -1,6 +1,6 @@
 <?php
 require 'php/requerirUsuario.php';
-require 'php/uploader.php';
+
 include 'include/head.inc';
 ?>
       <div class="wrapper">
@@ -41,7 +41,7 @@ include 'include/head.inc';
           <!-- /.box -->
         </div>
           	<!--FIN DEL MENU OPCIONES-->
-          <!--Fotografia
+          <!--Fotografia de lo de la clinica
                <div class="col-lg-12">
             <div class="box box-warning">
                   <div class="box-header with-border">
@@ -56,13 +56,19 @@ include 'include/head.inc';
                 </div>
                 </div>
               </div>
-              -->
-              <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                <input name="uploadedfile" type="file" />
-                <input type="submit" value="Subir archivo" />
-              </form>
 
-          	  <div class="col-lg-6"><!--informacion personal-->
+              -->
+<!--Fotografia de http://www.formacionwebonline.com/guia-para-subir-y-visualizar-imagenes-con-php-y-mysql/
+              <form action="cambiodatospersonales.php" enctype="multipart/form-data" method="post">
+  <label for="imagen">Imagen:</label>
+  <input id="imagen" name="imagen" size="30" type="file" />
+  <input type="submit" value="Cambiar datos" />
+</form>
+  -->
+  <!--Fotografia de optimizado con msqli(creo que iria mejor)
+  https://www.lawebdelprogramador.com/codigo/PHP/70-Guardar-y-mostrar-una-imagen-de-una-base-de-datos-MySQL.html
+-->
+              <div class="col-lg-6"><!--informacion personal-->
           		<div class="box box-warning">
           			<div class="box-header with-border">
 	    			<i class="glyphicon glyphicon-pencil"></i>
@@ -80,9 +86,9 @@ include 'include/head.inc';
 	    				</div>
 
               <div class="col-xs-6">
-                <label for="fecha">* Fecha de nacimiento</label>
+                <label for="fecha_nacimiento">* Fecha de nacimiento</label>
                 <div class="input-group">
-                  <input onBlur="getAge()" class="form-control" type="text" name="fecha" id="fecha" required="required"/>
+                  <input onBlur="getAge()" class="form-control" type="text" name="fecha_nacimiento" id="fecha_nacimiento" required="required"/>
                   <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
               </div>
@@ -206,8 +212,8 @@ include 'include/head.inc';
               </div>
 
               <div class="form-group">
-                <label for="categoria">* ¿Tiene hijos?</label>
-                <select name="categoria" required="required" class="form-control select2">
+                <label for="hijos">* ¿Tiene hijos?</label>
+                <select name="hijos" required="required" class="form-control select2">
                   <option selected="selected">
                   <option>Si</option>
                   <option>No</option>
