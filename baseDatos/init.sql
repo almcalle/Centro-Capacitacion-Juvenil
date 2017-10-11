@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-10-2017 a las 19:06:34
+-- Tiempo de generación: 11-10-2017 a las 19:12:08
 -- Versión del servidor: 5.6.35
 -- Versión de PHP: 7.1.8
 
@@ -36,3 +36,22 @@ CREATE TABLE `ficha` (
   `hijos` varchar(2) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `numero_hijos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `identidad` bigint(20) NOT NULL,
+  `usuario` varchar(8) COLLATE utf8_spanish2_ci NOT NULL,
+  `contrasena` varchar(8) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`identidad`, `usuario`, `contrasena`) VALUES
+(80119905615, 'admin', 'admin');
