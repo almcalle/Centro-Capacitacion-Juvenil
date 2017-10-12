@@ -492,7 +492,7 @@ include 'include/scripts.inc';
 ?>
 <script type="text/javascript">
 	$(document).ready(function(){
-    $("#fecha").datepicker({
+    $("#fecha_nacimiento").datepicker({
         defaultDate: new Date(),
         format: 'yyyy-mm-dd',
         //daysOfWeekDisabled: [0,6],
@@ -527,7 +527,7 @@ function soloNumero(e){
 
   function getAge(){
     var hoy = new Date();
-    var fechaNacimiento = new Date($("#fecha").val());
+    var fechaNacimiento = new Date($("#fecha_nacimiento").val());
     var edad = hoy.getFullYear()-fechaNacimiento.getFullYear();
     var mes = hoy.getMonth() - fechaNacimiento.getMonth();
     if (mes < 0 || ( mes==0) && hoy.getDate() < fechaNacimiento.getDate()){
