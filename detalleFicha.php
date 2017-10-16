@@ -57,11 +57,11 @@ else {
 	<br/>
 	<dl class="dl-horizontal">
 
-<?php
-    if($identidad!= ""){
+
+
       <dt>Numero de identidad:</dt>
       <dd><?php echo $identidad; ?></dd>
-		}
+
 
         <dt>Numero de identidad:</dt>
         <dd><?php echo $identidad; ?></dd>
