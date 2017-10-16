@@ -39,7 +39,8 @@ if ($reg==0) {
     <div class=\"alert alert-block alert-info\">
 	<h4>¡Lo sentimos!</h4>El Registro con ID ".$identidad." no fue encontrado. <a href='nuevaFicha.php'>¿Registrar una nueva ficha?</a>
 	</div></div>";
-} else {
+}
+else {
     $Ficha = mysqli_fetch_array($registro);
     //CREAMOS NUESTRA VISTA Y LA DEVOLVEMOS AL AJAX ?>
 <!-- Hacemos un <div class="col-lg-6"> para datos generales -->
@@ -55,6 +56,13 @@ if ($reg==0) {
 
 	<br/>
 	<dl class="dl-horizontal">
+
+<?php
+    if($identidad!= ""){
+      <dt>Numero de identidad:</dt>
+      <dd><?php echo $identidad; ?></dd>
+		}
+
         <dt>Numero de identidad:</dt>
         <dd><?php echo $identidad; ?></dd>
         <dt>Nombre y Apellidos:</dt>
