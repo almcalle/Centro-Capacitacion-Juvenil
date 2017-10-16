@@ -58,7 +58,7 @@ CREATE TABLE `ficha` (
   `numero_hermanos` int(11) NOT NULL,
   `lugar_que_ocupa` int(11) DEFAULT NULL,
   `tipo_vivienda` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `piso_de` int(30) DEFAULT NULL,
+  `piso_de` varchar(30) DEFAULT NULL,
   `religion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

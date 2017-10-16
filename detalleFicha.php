@@ -55,7 +55,6 @@ else {
   <div class="box-body">
 
 	<br/>
-	<dl class="dl-horizontal">
 
 
 
@@ -63,8 +62,6 @@ else {
       <dd><?php echo $identidad; ?></dd>
 
 
-        <dt>Numero de identidad:</dt>
-        <dd><?php echo $identidad; ?></dd>
         <dt>Nombre y Apellidos:</dt>
         <dd><?php echo $Ficha['nombre']; ?></dd>
         <dt>Fecha de Nacimiento:</dt>
@@ -75,8 +72,12 @@ else {
         <dd><?php echo $Ficha['sexo']; ?></dd>
         <dt>Dirección:</dt>
         <dd><?php echo $Ficha['direccion']; ?></dd>
-        <dt>Proyecto donde colabora:</dt>
-        <dd><?php echo $Ficha['proyecto_actual']; ?></dd>
+        <?php
+        if($Ficha['proyecto_actual']!=null){
+        echo "<dt>Proyecto donde colabora:</dt>";
+        echo "<dd>".$Ficha['proyecto_actual']."</dd>";
+      }
+         ?>
         <dt>Proyectos donde ha colaborado:</dt>
         <dd><?php echo $Ficha['proyectos_pasados']; ?></dd>
         <dt>Número de telefono:</dt>
