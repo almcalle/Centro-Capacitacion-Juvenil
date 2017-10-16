@@ -61,7 +61,7 @@
                 </li>
                 <!--Busqueda-->
                 <li class="treeview">
-                  <a href="busqueda.php">
+                  <a href="busquedaFicha.php">
                     <i class="glyphicon glyphicon-search"></i>
                     <span>Busqueda</span>
                     <!-- <i class="fa fa-angle-left pull-right"></i> -->
