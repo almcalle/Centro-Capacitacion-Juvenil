@@ -58,11 +58,6 @@ else {
 	<dl class="dl-horizontal">
 
 
-
-      <dt>Numero de identidad:</dt>
-      <dd><?php echo $identidad; ?></dd>
-
-
         <dt>Numero de identidad:</dt>
         <dd><?php echo $identidad; ?></dd>
         <dt>Nombre y Apellidos:</dt>
