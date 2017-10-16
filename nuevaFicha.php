@@ -116,7 +116,7 @@ include 'include/head.inc';
 	    				</div>
 
               <div class="form-group">
-	    					<label for="proyecto_actual"> Proyecto donde colabora</label>
+	    					<label for="proyecto_actual[]"> Proyecto donde colabora</label>
                 <select  name="proyecto_actual[]" class="form-control select2"  multiple="multiple">
                   <option>Becas San Miguel</option>
                   <option>Centros Infantiles</option>
@@ -151,7 +151,7 @@ include 'include/head.inc';
 
 
               <div class="form-group">
-	    					<label for="proyectos_pasados"> Proyectos donde ha colaborado</label>
+	    					<label for="proyectos_pasados[]"> Proyectos donde ha colaborado</label>
                 <select name="proyectos_pasados[]" class="form-control select2"  multiple= "multiple">
                   <option>Becas San Miguel</option>
                   <option>Centros Infantiles</option>
@@ -463,7 +463,7 @@ include 'include/head.inc';
 
             <div class="form-group">
               <label for="religion"> Religión</label>
-              <input  type="text"   name="religión" maxlength="40"  class="form-control"/>
+              <input  type="text"   name="religion" maxlength="40"  class="form-control"/>
             </div>
           </div>
             </div>

@@ -2,8 +2,6 @@
 	$identidad = $_POST["identidad"];
 	$nombre = $_POST["nombre"];
 	$fecha_nacimiento = $_POST["fecha_nacimiento"];
-	<!-- Aunque iría edad, la elimino porque cuando cumpla años el dato deja de ser util
-	-->
 	$lugar_nacimiento = $_POST["lugar_nacimiento"];
 	$sexo = $_POST["sexo"];
 	$direccion = $_POST["direccion"];
@@ -43,34 +41,42 @@
 	// $imagen_portada = $_FILES['imagen']['name'];
 	$d=mt_rand(1,10000);
 if (isset($_POST['identidad']) and isset($_POST['nombre'])) {
+//for para variables de selct multiple: proyectos pasados, proyecto actual
+$proyecto_actualDB="";
+	for ($i=0;$i<count($proyecto_actual);$i++){
+		if($proyecto_actualDB!=""){
+  		$proyecto_actualDB=$proyecto_actualDB.", ".$proyecto_actual[$i];
+		}else{
+			$proyecto_actualDB=$proyecto_actual[$i];
+		}
+
+		}
+		$proyectos_pasadosDB="";
+			for ($i=0;$i<count($proyectos_pasados);$i++){
+				if($proyectos_pasadosDB!=""){
+		  		$proyectos_pasadosDB=$proyectos_pasadosDB.", ".$proyectos_pasados[$i];
+				}else{
+					$proyectos_pasadosDB=$proyectos_pasados[$i];
+				}
+
+				}
+	//fin de for para variables de select multiple
 
 
 		require "../conexion.php";
-		$consulta = mysqli_query("select identidad from ficha where identidad='".$identidad."'")or die(mysql_error());
-		$id = mysql_num_rows($consulta);
+		$consulta = mysqli_query($conn,"select identidad from ficha where identidad='".$identidad."'")or die(mysqli_error($conn));
+		$id = mysqli_num_rows($consulta);
 		if ($id==0){
 
-			mysqli_query("insert into ficha(identidad,nombre,fecha_nacimiento,lugar_nacimiento,
-			sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos,nivel,
-			centro_educativo,cuenta,carrera,inicio_carrera,promedio_inicial,sangre,peso,enfermedades,medicamentos,
-			operaciones,nombre_madre,telefono_madre,ocupacion_madre,categoria_madre,nombre_padre,telefono_padre,
-			ocupacion_padre,categoria_padre,vive_padres,encargado,numero_hermanos,lugar_que_ocupa,tipo_vivienda,
-			piso_de,religion)
-			values('".$identidad."','".$nombre."','".$fecha_nacimiento."','".$lugar_nacimiento."','".$sexo."',
-			'".$direccion."','".$proyecto_actual."','".$proyectos_pasados."','".$telefono."','".$categoria."',
-			'".$grupo."','".$hijos."','".$numero_hijos."','".$nivel."'','".$centro_educativo."','".$cuenta."',
-			'".$carrera."','".$inicio_carrera."','".$promedio_inicial."','".$sangre."','".$peso."',
-			'".$enfermedades."','".$medicamentos."','".$operaciones."','".$nombre_madre."','".$telefono_madre."',
-			'".$ocupacion_madre."','".$categoria_madre."','".$nombre_padre."','".$telefono_padre."',
-			'".$ocupacion_padre."','".$categoria_padre."','".$vive_padres."','".$encargado."','".$numero_hermanos."',
-			'".$lugar_que_ocupa."','".$tipo_vivienda."','".$piso_de."','".$religion."')")or die(mysql_error());
+			mysqli_query($conn,"insert into ficha (identidad,nombre,fecha_nacimiento,lugar_nacimiento,sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos,nivel,centro_educativo,cuenta,carrera,inicio_carrera,promedio_inicial,sangre,peso,enfermedades,medicamentos,operaciones,nombre_madre,telefono_madre,ocupacion_madre,categoria_madre,nombre_padre,telefono_padre,ocupacion_padre,categoria_padre,vive_padres,encargado,numero_hermanos,lugar_que_ocupa,tipo_vivienda,piso_de,religion)
+values('".$identidad."','".$nombre."','".$fecha_nacimiento."','".$lugar_nacimiento."','".$sexo."','".$direccion."','".$proyecto_actualDB."','".$proyectos_pasadosDB."','".$telefono."','".$categoria."','".$grupo."','".$hijos."','".$numero_hijos."','".$nivel."','".$centro_educativo."','".$cuenta."','".$carrera."','".$inicio_carrera."','".$promedio_inicial."','".$sangre."','".$peso."','".$enfermedades."','".$medicamentos."','".$operaciones."','".$nombre_madre."','".$telefono_madre."','".$ocupacion_madre."','".$categoria_madre."','".$nombre_padre."','".$telefono_padre."','".$ocupacion_padre."','".$categoria_padre."','".$vive_padres."','".$encargado."','".$numero_hermanos."','".$lugar_que_ocupa."','".$tipo_vivienda."','".$piso_de."','".$religion."')") or die(mysqli_error($conn));
 			echo '<script type="text/javascript">alert("Ficha Guardada");</script>';
-			echo "<script>window.location = '../detalleFicha.php?id=".$identidad."'</script>";
+			echo "<script>window.location = '../../detalleFicha.php?id=".$identidad."'</script>";
 		}
 		else {
 			echo '<script type="text/javascript">alert("El No. de identidad ya se encuentra registrado");</script>';
-			echo "<script>window.location = '../nuevaFicha.php'</script>";
+			echo "<script>window.location = '../../nuevaFicha.php'</script>";
 		}
-		mysqli_close();
+		mysqli_close($conn);
 }
 ?>

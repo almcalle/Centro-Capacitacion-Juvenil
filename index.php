@@ -4,7 +4,7 @@
 	<div class="login-box">
       <div class="login-logo">
       <p>Centro de Capacitación Juvenil</p>
-      <!-- <p>Santa Teresa</p> -->
+
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Iniciar Sesión</p>
