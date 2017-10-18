@@ -103,7 +103,7 @@ include 'include/head.inc';
 
               <div class="form-group">
 	    					<label for="sexo">* Sexo</label>
-                <select name="sexo" required="required"  class="form-control select2">
+                <select name="sexo" required="required"  class="form-control">
                   <option selected="selected">
                   <option>Masculino</option>
                   <option>Femenino</option>
@@ -278,7 +278,7 @@ include 'include/head.inc';
 
                 <label for="inicio_carrera"> Fecha de inicio de carrera</label>
                 <div class="input-group">
-                  <input onBlur="getAge()" class="form-control" type="text"
+                  <input class="form-control" type="text"
                   name="inicio_carrera" id="inicio_carrera" />
                   <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
@@ -481,10 +481,10 @@ include 'include/head.inc';
          </div>
         </div>
         </section><!-- right col -->
+      </div>
       <?php
       include 'include/footer.inc';
       ?>
-    </div>
       </div><!-- ./wrapper -->
 
 <?php
