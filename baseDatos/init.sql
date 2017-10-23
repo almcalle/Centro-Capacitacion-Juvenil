@@ -59,7 +59,8 @@ CREATE TABLE `ficha` (
   `lugar_que_ocupa` int(11) DEFAULT NULL,
   `tipo_vivienda` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `piso_de` varchar(30) DEFAULT NULL,
-  `religion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL
+  `religion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `foto` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
