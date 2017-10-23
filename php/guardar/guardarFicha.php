@@ -46,7 +46,60 @@
 	$piso_de = $_POST["piso_de"];
 	$religion = $_POST["religion"];
 	// $imagen_portada = $_FILES['imagen']['name'];
+
+
+//Imagen de perfil
+	$target_dir = "../../fotos/";
+	$target_file = $target_dir . basename($_FILES["perfil"]["name"]);
+	$uploadOk = 1;
+	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+	// Check if image file is a actual image or fake image
+	if(isset($_POST["submit"])) {
+	    $check = getimagesize($_FILES["perfil"]["tmp_name"]);
+	    if($check !== false) {
+	        echo "File is an image - " . $check["mime"] . ".";
+	        $uploadOk = 1;
+	    } else {
+	        echo "File is not an image.";
+	        $uploadOk = 0;
+	    }
+	}
+
+
+	// Check if file already exists
+	if (file_exists($target_file)) {
+	    echo "Sorry, file already exists.";
+	    $uploadOk = 0;
+	}
+	// Ver si tamaño es menor de 25MB
+	if ($_FILES["perfil"]["size"] > 25000000) {
+	    echo "Sorry, your file is too large.";
+	    $uploadOk = 0;
+	}
+	// Allow certain file formats
+	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+	    echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+	    $uploadOk = 0;
+	}
+
+	// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["perfil"]["tmp_name"], $target_file)) {
+			$foto=basename( $_FILES["perfil"]["name"]);
+        echo "The file ".$foto." has been uploaded.";
+				// echo '<script type="text/javascript">alert("La foto se ha subido correctamente");</script>';
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+				// echo '<script type="text/javascript">alert("La foto no se ha subido correctamente");</script>';
+
+    }
+}
+
 	$d=mt_rand(1,10000);
+
 if (isset($_POST['identidad']) and isset($_POST['nombre'])) {
 //for para variables de selct multiple: proyectos pasados, proyecto actual
 $proyecto_actualDB="";
@@ -75,10 +128,11 @@ $proyecto_actualDB="";
 		$id = mysqli_num_rows($consulta);
 		if ($id==0){
 
-			mysqli_query($conn,"insert into ficha (identidad,nombre,fecha_nacimiento,lugar_nacimiento,sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos,nivel,centro_educativo,cuenta,carrera,inicio_carrera,promedio_inicial,sangre,peso,enfermedades,medicamentos,operaciones,nombre_madre,telefono_madre,ocupacion_madre,categoria_madre,nombre_padre,telefono_padre,ocupacion_padre,categoria_padre,vive_padres,encargado,numero_hermanos,lugar_que_ocupa,tipo_vivienda,piso_de,religion)
-values('".$identidad."','".$nombre."','".$fecha_nacimiento."','".$lugar_nacimiento."','".$sexo."','".$direccion."','".$proyecto_actualDB."','".$proyectos_pasadosDB."','".$telefono."','".$categoria."','".$grupo."','".$hijos."','".$numero_hijos."','".$nivel."','".$centro_educativo."','".$cuenta."','".$carrera."','".$inicio_carrera."','".$promedio_inicial."','".$sangre."','".$peso."','".$enfermedades."','".$medicamentos."','".$operaciones."','".$nombre_madre."','".$telefono_madre."','".$ocupacion_madre."','".$categoria_madre."','".$nombre_padre."','".$telefono_padre."','".$ocupacion_padre."','".$categoria_padre."','".$vive_padres."','".$encargado."','".$numero_hermanos."','".$lugar_que_ocupa."','".$tipo_vivienda."','".$piso_de."','".$religion."')") or die(mysqli_error($conn));
+			mysqli_query($conn,"insert into ficha (identidad,nombre,fecha_nacimiento,lugar_nacimiento,sexo,direccion,proyecto_actual,proyectos_pasados,telefono,categoria,grupo,hijos,numero_hijos,nivel,centro_educativo,cuenta,carrera,inicio_carrera,promedio_inicial,sangre,peso,enfermedades,medicamentos,operaciones,nombre_madre,telefono_madre,ocupacion_madre,categoria_madre,nombre_padre,telefono_padre,ocupacion_padre,categoria_padre,vive_padres,encargado,numero_hermanos,lugar_que_ocupa,tipo_vivienda,piso_de,religion,foto)
+values('".$identidad."','".$nombre."','".$fecha_nacimiento."','".$lugar_nacimiento."','".$sexo."','".$direccion."','".$proyecto_actualDB."','".$proyectos_pasadosDB."','".$telefono."','".$categoria."','".$grupo."','".$hijos."','".$numero_hijos."','".$nivel."','".$centro_educativo."','".$cuenta."','".$carrera."','".$inicio_carrera."','".$promedio_inicial."','".$sangre."','".$peso."','".$enfermedades."','".$medicamentos."','".$operaciones."','".$nombre_madre."','".$telefono_madre."','"
+.$ocupacion_madre."','".$categoria_madre."','".$nombre_padre."','".$telefono_padre."','".$ocupacion_padre."','".$categoria_padre."','".$vive_padres."','".$encargado."','".$numero_hermanos."','".$lugar_que_ocupa."','".$tipo_vivienda."','".$piso_de."','".$religion."','".$foto."')") or die(mysqli_error($conn));
 
-			echo '<script type="text/javascript">alert("Ficha Guardada");</script>';
+			echo '<script type="text/javascript">alert("Ficha Guardada OK:'.$uploadOk.'");</script>';
 			echo "<script>window.location = '../../detalleFicha.php?id=".$identidad."'</script>";
 		}
 		else {

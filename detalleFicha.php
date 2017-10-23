@@ -56,6 +56,7 @@ else {
 
 	<br/>
 
+<img src="fotos/<?php echo $Ficha['foto']; ?>" style="width:40%">
 
 
       <dt>Numero de identidad:</dt>
@@ -76,10 +77,13 @@ else {
         if($Ficha['proyecto_actual']!=null){
         echo "<dt>Proyecto donde colabora:</dt>";
         echo "<dd>".$Ficha['proyecto_actual']."</dd>";
-      }
+        }
+        if($Ficha['proyectos_pasados']!=null){
+          echo "<dt>Proyectos donde ha colaborado:</dt>";
+          echo "<dd>".$Ficha['proyectos_pasados']."</dd>";
+        }
          ?>
-        <dt>Proyectos donde ha colaborado:</dt>
-        <dd><?php echo $Ficha['proyectos_pasados']; ?></dd>
+
         <dt>Número de telefono:</dt>
         <dd><?php echo $Ficha['telefono']; ?></dd>
         <dt>Categoría:</dt>

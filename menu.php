@@ -13,11 +13,65 @@ include 'include/menu.inc';
 	          <ol class="breadcrumb">
 	          <li><a href="#">
             <li class="active">Inicio</li>
+          </a>
 	          </ol>
 	    </section>
 
       <section class="content">
-      Tabla con nombres y apellidos, proyecto en que colabora, nivel academico y categoria
+
+        <section id="tabla_resultado">
+                <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+                <!-- Tabla con nombres y apellidos, proyecto en que colabora, nivel academico y categoria -->
+
+                <?php
+                require 'php/conexion.php';
+                $id = $_POST['id'];
+
+
+                $fichas = mysqli_query($conn,"SELECT * FROM ficha ") or die(mysql_error());
+
+
+              echo '<table id="tabla" class="display" cellspacing="0" width="100%">
+                <thead>
+                              <tr>
+                                 <th width="100">IDENTIDAD</th>
+                                 <th width="200">Nombre</th>
+                                 <th width="200">Proyecto en que colabora</th>
+                                  <th width="200">Nivel academico</th>
+                                  <th width="200">Categoría</th>
+                                  <th width="100">ACCIONES</th>
+                              </tr>
+                </thead>
+                 <tbody>';
+
+
+
+
+      while($registro = mysqli_fetch_array($fichas)){
+
+      echo'<tr>
+
+                <td>'.$registro['identidad'].'</td>
+                <td>'.$registro['nombre'].'</td>
+                <td>'.$registro['proyecto_actual'].'</td>
+                <td>'.$registro['nivel'].'</td>
+                <td>'.$registro['categoria'].'</td>
+                      <td>
+                       <a href="detalleFicha.php?id='.$registro['identidad'].'""
+                        class="glyphicon glyphicon-user" data-toggle="tooltip"
+                        title="Ver Ficha"></a>
+                       &nbsp;&nbsp;&nbsp;
+                       <a href="javascript:borrarFicha('.$registro2['id'].');"
+                        class="glyphicon glyphicon-trash"
+                        data-toggle="tooltip" title="borrar Evaluación"></a>
+
+                        </td>
+                 </tr>';
+    }
+      echo '</tbody></table>';
+
+      ?>
+      </section>
       </section><!-- right col -->
       </div>
       </div><!-- ./wrapper -->
@@ -25,4 +79,34 @@ include 'include/menu.inc';
 
 include 'include/scripts.inc';
 include 'include/plugins.inc';
+?>
+
+<script src = "js/jquery.dataTables.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    function borrarFicha(id){
+		var url = 'php/eliminar/borrarFicha.php';
+		var pregunta = confirm('¿Esta seguro de eliminar la ficha?');
+		if(pregunta==true){
+			$.ajax({
+			type:'POST',
+			url:url,
+			data:'id='+id,
+			success: function(registro){
+				$('#agrega-registros').html(registro);
+			}
+		});
+		}else{
+			return false;
+		}
+	}
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#tabla').DataTable();
+} );
+</script>
+<?php
+include 'include/plugins.inc';
+include 'include/fin.inc';
 ?>

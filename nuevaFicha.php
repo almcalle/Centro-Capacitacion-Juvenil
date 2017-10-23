@@ -30,7 +30,9 @@ include 'include/head.inc';
          	<h4></h4>
          </div>
          <div class="panel-body">
-         		 <form role="form" method="POST" action="php/guardar/guardarFicha.php"  id="nuevaFicha">
+         		 <form role="form" method="POST" action="php/guardar/guardarFicha.php"
+             enctype="multipart/form-data"
+             id="nuevaFicha">
           	<!--MENU DE OPCIONES-->
           	<div class="col-lg-12">
           <div class="box box-solid">
@@ -77,6 +79,12 @@ include 'include/head.inc';
 	    			<div class="box-body">
 	    				<div class="form-group">
 
+                <div class="form-group">
+                  <label for="identidad">* Foto</label>
+
+                <input type="file" name="perfil" accept="image/*" id="perfil">
+
+                </div>
 	    					<label for="identidad">* Numero de identidad</label>
 							<input class="form-control" maxlength="13" required="required" type="text" name="identidad" placeholder="" onkeypress="return soloNumero(event)"/>
 	    				</div>
@@ -482,7 +490,7 @@ include 'include/head.inc';
         </div>
         </section><!-- right col -->
       </div>
-  
+
       </div><!-- ./wrapper -->
 
 <?php
