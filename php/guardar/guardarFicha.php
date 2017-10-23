@@ -132,7 +132,7 @@ $proyecto_actualDB="";
 values('".$identidad."','".$nombre."','".$fecha_nacimiento."','".$lugar_nacimiento."','".$sexo."','".$direccion."','".$proyecto_actualDB."','".$proyectos_pasadosDB."','".$telefono."','".$categoria."','".$grupo."','".$hijos."','".$numero_hijos."','".$nivel."','".$centro_educativo."','".$cuenta."','".$carrera."','".$inicio_carrera."','".$promedio_inicial."','".$sangre."','".$peso."','".$enfermedades."','".$medicamentos."','".$operaciones."','".$nombre_madre."','".$telefono_madre."','"
 .$ocupacion_madre."','".$categoria_madre."','".$nombre_padre."','".$telefono_padre."','".$ocupacion_padre."','".$categoria_padre."','".$vive_padres."','".$encargado."','".$numero_hermanos."','".$lugar_que_ocupa."','".$tipo_vivienda."','".$piso_de."','".$religion."','".$foto."')") or die(mysqli_error($conn));
 
-			echo '<script type="text/javascript">alert("Ficha Guardada OK:'.$uploadOk.'");</script>';
+			echo '<script type="text/javascript">alert("Ficha Guardada");</script>';
 			echo "<script>window.location = '../../detalleFicha.php?id=".$identidad."'</script>";
 		}
 		else {
