@@ -4,7 +4,7 @@ include 'include/head.inc';
 ?>
 <div class="wrapper"> <!-- Incluye el menu lateral solamente-->
   <?php
-  include 'inc/menu.inc';
+  include 'include/menu.inc';
   ?>
 //Mantiene los datos en el campo de busqueda cuando le das a buscar
   <?php
@@ -317,17 +317,19 @@ include 'include/head.inc';
 </section> <!--fin de </section contenido-->
 
             <?php
+            //función isset-> Determina si una variable está definida y no es NULL:
+            //devolverá TRUE únicamente si todos los parámetros están definidos
+            //función mysqli_query-> Realiza una consulta dada por query a la base de datos.
+            //mysqli_query ( mysqli $link , string $query ) con link=Un identificador de enlace devuelto
+            //por mysqli_connect() o mysqli_init() y query =la string de la consulta.
+            //mysqli_num_rows recoge el numero de filas devueltas por la consulta query
+            //mysqli_fetch_array ( mysqli_result $result)->Retorna un array que corresponde a la fila
+            //obtenida o NULL si es que no hay más filas en el resultset representado por el parámetro result.
 if (isset($_GET['busqueda']) && isset($_GET['campo'])) {
     $query="SELECT * FROM ".$tabla." WHERE ".$campo." LIKE '%".$busqueda."%'";
     $resultados  = mysqli_query($conn,$query);
     $cuenta= mysqli_num_rows($resultados);
-
-    $consulta1 = mysqli_query($conn,"select COUNT(*) from ".$tabla."");
-    $registros=mysqli_result($consulta1, 0);
-
-    echo " Cuenta: ".$cuenta." de ".$registros." registros";
-    $porcentaje=$cuenta/$registros*100;
-    echo "<br> Porcentaje: ".$porcentaje."%" ?>
+?>
 
   <div class="box box-warning">
     <div class="box-header with-border">
@@ -338,54 +340,44 @@ if (isset($_GET['busqueda']) && isset($_GET['campo'])) {
 
   <div class="col-lg-12">
 <?php
-  echo '<table id="example" class="display" cellspacing="0" width="100%">
+ echo '<table id="example" class="display" cellspacing="0" width="100%">
     <thead>
-                  <tr>
+                 <tr>
 
-                     <th width="100">IDENTIDAD</th>
-                     <th width="200">NOMBRE</th>
-                      <th width="200">FECHA</th>
-                      <th width="200">RESULTADO</th>
-                <th width="100">ACCIONES</th>
+                    <th width="100">IDENTIDAD</th>
+                    <th width="200">NOMBRE</th>
+                    <th width="200">RESULTADO</th>
+                    <th width="100">ACCIONES</th>
                   </tr>
-    </thead>
+                  </thead>
      <tbody>';
 
-    while ($fila = mysql_fetch_array($resultados)) {
-        $consulta = mysql_query("select nombre from ficha where identidad='".$fila['identidad']."'") or die(mysql_error());
-        $nombre = mysql_fetch_array($consulta);
+    while ($fila = mysqli_fetch_array($resultados)) {
+        $consulta = mysqli_query($conn,"select nombre from ficha where identidad='".$fila['identidad']."'") or die(mysqli_error($conn));
+        $nombre = mysqli_fetch_array($consulta);
         echo'<tr>
               <td>'.$fila['identidad'].'</td>
-              <td>'.$nombre['nombre'].'</td>
-               <td>'.$fila['fecha'].'</td>
-               <td>'.$fila[$campo].'</td>
-                    <td><a href="detalleFicha.php?id='.$fila['identidad'].'" class="glyphicon glyphicon-search" data-toggle="tooltip" title="Ver Ficha"></a>&nbsp;&nbsp;&nbsp;
-                    <!-- <a href="javascript:borrarDiagnostico('.$registro2['id'].');" class="fa fa-trash" data-toggle="tooltip" title="Borrar"></a> -->
-                    </td>
-               </tr>';
+              <td>'.$fila['nombre'].'</td>
+              <td>'.$fila[$campo].'</td>
+              <td><a href="detalleFicha.php?id='.$fila['identidad'].'" class="glyphicon glyphicon-search" data-toggle="tooltip" title="Ver Ficha"></a>&nbsp;&nbsp;&nbsp;
+              </tr>';
     }
     echo '</tbody></table>';
-}
-            ?>
-
-           </div>
-
-          </div>
-          </div>
-
-           	</div>
-           </div>
-           </div>
-          </div>
-          <!-- right col -->
-          </div>
-        <?php
-        include 'inc/footer.inc';
+} // fin del if
         ?>
-        </div><!-- ./wrapper -->
+
+      </div> <!-- fin   <div class="col-lg-12"> de resultados-->
+
+      </div> <!-- fin <div class="box-body"> de resultados-->
+      </div> <!--  fin <div class="box box-warning"> -->
+
+      </div> <!--fin <div class="row"> -->
+      </div> <!-- fin <div class="content-wrapper"> -->
+      </div> <!-- fin <div class="wrapper"> -->
+
 
   <?php
-  include 'inc/scripts.inc';
+  include 'include/scripts.inc';
   ?>
   <script src = "js/jquery.dataTables.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -396,6 +388,6 @@ if (isset($_GET['busqueda']) && isset($_GET['campo'])) {
 
 
   <?php
-  include 'inc/plugins.inc';
-  include 'inc/fin.inc';
+  include 'include/plugins.inc';
+  include 'include/fin.inc';
   ?>

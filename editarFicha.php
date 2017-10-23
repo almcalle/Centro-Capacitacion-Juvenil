@@ -12,8 +12,8 @@ include 'include/head.inc';
         require 'php/conexion.php';
         $buscar = $_GET['id'];
         //BUSCA FICHA
-        $registro = mysql_query("select * from ficha where identidad='".$buscar."'");
-        $Ficha = mysql_fetch_array($registro);
+        $registro = mysqli_query($conn,"select * from ficha where identidad='".$buscar."'");
+        $Ficha = mysqli_fetch_array($registro);
         ?>
       <div class="content-wrapper">
         <section class="content-header">
@@ -303,10 +303,8 @@ include 'include/head.inc';
          </div>
         </div>
         </section><!-- right col -->
-      <?php
-      include 'include/footer.inc';
-      ?>
-    </div>
+
+
       </div><!-- ./wrapper -->
 
 <?php

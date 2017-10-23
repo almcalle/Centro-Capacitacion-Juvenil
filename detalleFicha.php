@@ -17,7 +17,7 @@ require 'php/conexion.php';
         <small>Detalle de ficha</small>
         </h1>
         <ol class="breadcrumb">
-        <li><a href="menu.php"><i class="fa fa-dashboard"></i> Panel de Control</a></li>
+        <li><a href="menu.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li>Ficha del alumno</li>
         <li class="active">Detalle ficha del alumno</li>
         </ol>
@@ -188,20 +188,15 @@ else {
 
 
 
+<a class="btn btn-danger btn-flat pull-right" href="javascript:borrarFicha(<?php echo $identidad; ?>);">Borrar Ficha
+</a>
+<a class="btn btn-warning btn-flat pull-right" href="editarFicha.php?id=<?php echo $identidad; ?>">Editar Ficha
+</a>
 
-        <dd>* Datos al momento del registro</dd>
-    </dl><br/>
 
 
-    <!--
-    <a class="btn btn-app" href="javascript:borrarFicha(<?php echo $identidad; ?>);">
-    	<i class="fa fa-bitbucket"></i> Borrar Ficha
-    </a>
 
-    <a class="btn btn-app" href="editarFicha.php?id=<?php echo $identidad; ?>">
-      <i class="fa fa-edit"></i> Editar Ficha
-    </a>
-  -->
+
 
   <?php
     }
@@ -214,14 +209,14 @@ else {
 
 </div> <!--  fin del content wrapper-->
 </div> <!-- ./fin del wrapper general-->
-<!--
+
 <div id="agregar-html-borrado"></div>
 
 <script type="text/javascript">
     function borrarFicha(id){
       debugger;
     var url = 'php/borrarFicha.php';
-    var pregunta = confirm('¿Esta seguro de eliminar el Examen?');
+    var pregunta = confirm('¿Esta seguro de eliminar la ficha?');
     if(pregunta==true){
       $.ajax({
       type:'POST',
@@ -236,7 +231,7 @@ else {
     }
   }
 </script>
--->
+
 <?php
 include 'include/scripts.inc';
 ?>

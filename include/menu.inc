@@ -44,8 +44,9 @@
 <!--Boton cerrrar-->
           </div>
           <!-- AQUI COMIENZA EL MENU -->
+
           <ul class="sidebar-menu">
-              <li class="header">PANEL DE NAVEGACION</li>
+              <li class="header">          MENU</li> 
                 <!--TIEMPO EXTRA-->
 
                 <!--Añadir-->

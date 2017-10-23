@@ -11,20 +11,18 @@ include 'include/menu.inc';
 	            <small>Bienvenido</small>
 	          </h1>
 	          <ol class="breadcrumb">
-	            <li><a href="#">
-                <!-- <i class="glyphicon glyphicon-dashboard"></i> -->
-                 Panel de Control</a></li>
-	            <li class="active">Inicio</li>
+	          <li><a href="#">
+            <li class="active">Inicio</li>
 	          </ol>
 	    </section>
 
       <section class="content">
-        Tabla con nombres y apellidos, proyecto en que colabora, nivel academico y categoria
-        </section><!-- right col -->
+      Tabla con nombres y apellidos, proyecto en que colabora, nivel academico y categoria
+      </section><!-- right col -->
       </div>
       </div><!-- ./wrapper -->
 <?php
-include 'include/footer.inc';
+
 include 'include/scripts.inc';
 include 'include/plugins.inc';
 ?>

@@ -482,9 +482,7 @@ include 'include/head.inc';
         </div>
         </section><!-- right col -->
       </div>
-      <?php
-      include 'include/footer.inc';
-      ?>
+  
       </div><!-- ./wrapper -->
 
 <?php
