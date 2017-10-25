@@ -56,7 +56,6 @@ else {
 
 	<br/>
 
-<img src="fotos/<?php echo $Ficha['foto']; ?>" style="width:40%">
 
 
       <dt>Numero de identidad:</dt>
@@ -98,6 +97,21 @@ else {
       </div> <!-- fin <div class="box-body"> -->
     </div> <!--  fin <div class="box box-warning"> -->
   </div> <!-- fin <div class="col-lg-6">  aplicado a datos generales-->
+    <div class="col-lg-6"> <!-- aplicado a estudios y salud -->
+    <div class="box box-warning">
+
+    <div class="box-header with-border">
+          <i class="glyphicon glyphicon-camera"></i>
+          <h3 class="box-title">Foto</h3>
+    </div> <!-- fin <div class="box-header with-border"> -->
+
+      <div class="box-body">
+        <img src="fotos/<?php echo $Ficha['foto']; ?>" style="width:40%">
+
+
+</div>
+</div>
+</div>
 
 <div class="col-lg-6"> <!-- aplicado a estudios y salud -->
 <div class="box box-warning">
@@ -238,8 +252,6 @@ else {
 
 <?php
 include 'include/scripts.inc';
-?>
-<?php
 include 'include/plugins.inc';
 include 'include/fin.inc';
 ?>

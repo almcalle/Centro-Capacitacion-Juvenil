@@ -14,6 +14,7 @@ include 'include/head.inc';
         //BUSCA FICHA
         $registro = mysqli_query($conn,"select * from ficha where identidad='".$buscar."'");
         $Ficha = mysqli_fetch_array($registro);
+      }
         ?>
       <div class="content-wrapper">
         <section class="content-header">
