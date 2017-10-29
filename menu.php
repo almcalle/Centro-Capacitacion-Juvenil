@@ -56,15 +56,15 @@ include 'include/menu.inc';
                 <td>'.$registro['proyecto_actual'].'</td>
                 <td>'.$registro['nivel'].'</td>
                 <td>'.$registro['categoria'].'</td>
-                      <td>
+                <td>
                        <a href="detalleFicha.php?id='.$registro['identidad'].'""
-                        class="glyphicon glyphicon-user" data-toggle="tooltip"
+                        class="glyphicon glyphicon-search" data-toggle="tooltip"
                         title="Ver Ficha"></a>
                        &nbsp;&nbsp;&nbsp;
-                       <a href="javascript:borrarFicha('.$registro2['id'].');"
+                       <a href="javascript:borrarFicha('.$registro['id'].');"
                         class="glyphicon glyphicon-trash"
-                        data-toggle="tooltip" title="borrar Evaluación"></a>
-
+                        data-toggle="tooltip" title="Borrar ficha"></a>
+                        &nbsp;&nbsp;&nbsp;
                         </td>
                  </tr>';
     }
@@ -82,10 +82,10 @@ include 'include/plugins.inc';
 ?>
 
 <script src = "js/jquery.dataTables.js" type="text/javascript"></script>
-
+<div id="agregar-html-borrado"></div>
 <script type="text/javascript">
     function borrarFicha(id){
-		var url = 'php/eliminar/borrarFicha.php';
+		var url = 'php/borrarFicha.php';
 		var pregunta = confirm('¿Esta seguro de eliminar la ficha?');
 		if(pregunta==true){
 			$.ajax({
@@ -93,7 +93,7 @@ include 'include/plugins.inc';
 			url:url,
 			data:'id='+id,
 			success: function(registro){
-				$('#agrega-registros').html(registro);
+				$('#agregar-html-borrado').html(registro);
 			}
 		});
 		}else{
@@ -107,6 +107,7 @@ $(document).ready(function() {
 } );
 </script>
 <?php
+
 include 'include/plugins.inc';
 include 'include/fin.inc';
 ?>
