@@ -28,7 +28,7 @@ include 'include/menu.inc';
                 $id = $_POST['id'];
 
 
-                $fichas = mysqli_query($conn,"SELECT * FROM ficha ") or die(mysql_error());
+                $fichas = mysqli_query($conn,"SELECT * FROM ficha ") or die(mysqli_error());
 
 
               echo '<table id="tabla" class="display" cellspacing="0" width="100%">
@@ -61,6 +61,7 @@ include 'include/menu.inc';
                         class="glyphicon glyphicon-search" data-toggle="tooltip"
                         title="Ver Ficha"></a>
                        &nbsp;&nbsp;&nbsp;
+
                        <a href="javascript:borrarFicha('.$registro['id'].');"
                         class="glyphicon glyphicon-trash"
                         data-toggle="tooltip" title="Borrar ficha"></a>

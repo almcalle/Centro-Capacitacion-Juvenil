@@ -43,10 +43,27 @@ if ($reg==0) {
 else {
     $Ficha = mysqli_fetch_array($registro);
     //CREAMOS NUESTRA VISTA Y LA DEVOLVEMOS AL AJAX ?>
+    <div class="col-lg-6">
+    <div class="box box-warning">
+
+    <div class="box-header with-border">
+          <i class="glyphicon glyphicon-camera"></i>
+          <h3 class="box-title">Foto</h3>
+    </div> <!-- fin <div class="box-header with-border"> -->
+
+      <div class="box-body">
+        <img src="fotos/<?php echo $Ficha['foto']; ?>" style="width:40%">
+<!--
+
+</div>
+</div>
+-->
+</div>
 <!-- Hacemos un <div class="col-lg-6"> para datos generales -->
+<!--
 <div class="col-lg-6">
 <div class="box box-warning">
-
+-->
 <div class="box-header with-border">
   <i class="glyphicon glyphicon-pencil"></i>
   <h3 class="box-title">DATOS GENERALES</h3>
@@ -97,21 +114,7 @@ else {
       </div> <!-- fin <div class="box-body"> -->
     </div> <!--  fin <div class="box box-warning"> -->
   </div> <!-- fin <div class="col-lg-6">  aplicado a datos generales-->
-    <div class="col-lg-6"> <!-- aplicado a estudios y salud -->
-    <div class="box box-warning">
 
-    <div class="box-header with-border">
-          <i class="glyphicon glyphicon-camera"></i>
-          <h3 class="box-title">Foto</h3>
-    </div> <!-- fin <div class="box-header with-border"> -->
-
-      <div class="box-body">
-        <img src="fotos/<?php echo $Ficha['foto']; ?>" style="width:40%">
-
-
-</div>
-</div>
-</div>
 
 <div class="col-lg-6"> <!-- aplicado a estudios y salud -->
 <div class="box box-warning">
@@ -211,6 +214,8 @@ else {
 <a class="btn btn-warning btn-flat pull-right" href="editarFicha.php?id=<?php echo $identidad; ?>">Editar Ficha
 </a>
 
+<a class="btn btn-success btn-flat pull-right" href='javascript:print(); void 0;'>Imprimir Ficha
+</a>
 
 
 
