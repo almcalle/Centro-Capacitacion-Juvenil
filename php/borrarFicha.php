@@ -4,7 +4,7 @@ $id = $_POST['id'];
 
 //ELIMINAMOS LA FICHA
 
-mysqli_query($conn,"DELETE FROM ficha  WHERE identidad = '$id'");
+mysqli_query($conn,"DELETE FROM ficha WHERE identidad = '$id'");
 
 //ACTUALIZAMOS LOS REGISTROS Y LOS OBTENEMOS
 mysqli_close($conn);

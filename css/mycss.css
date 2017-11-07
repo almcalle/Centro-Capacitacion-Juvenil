@@ -11,3 +11,10 @@
 .main-header .sidebar-toggle:before {
     content: none;
 }
+
+@media print {
+   .not-printable{
+       display: none;
+    }
+
+}

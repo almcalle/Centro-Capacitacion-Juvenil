@@ -50,17 +50,23 @@
 
 //Imagen de perfil
 	$target_dir = "../../fotos/";
+	$nombreFoto= str_replace( "/\s+/", "_",$nombre);
+
+
+	// $target_file = $target_dir . basename($nombreFoto);
 	$target_file = $target_dir . basename($_FILES["perfil"]["name"]);
+	echo '<script type="text/javascript">alert("'.$target_file.'");</script>';
+
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["submit"])) {
 	    $check = getimagesize($_FILES["perfil"]["tmp_name"]);
 	    if($check !== false) {
-	        echo "File is an image - " . $check["mime"] . ".";
+	        $error = "File is an image - " . $check["mime"] . ".";
 	        $uploadOk = 1;
 	    } else {
-	        echo "File is not an image.";
+	        $error =  "File is not an image.";
 	        $uploadOk = 0;
 	    }
 	}
@@ -68,31 +74,31 @@
 
 	// Check if file already exists
 	if (file_exists($target_file)) {
-	    echo "Sorry, file already exists.";
+	    $error =  "Sorry, file already exists.";
 	    $uploadOk = 0;
 	}
 	// Ver si tamaño es menor de 25MB
 	if ($_FILES["perfil"]["size"] > 25000000) {
-	    echo "Sorry, your file is too large.";
+	    $error =  "Sorry, your file is too large.";
 	    $uploadOk = 0;
 	}
 	// Allow certain file formats
 	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-	    echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+	    $error =  "Sorry, only JPG, JPEG, PNG files are allowed.";
 	    $uploadOk = 0;
 	}
 
 	// Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
+    $error =  "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["perfil"]["tmp_name"], $target_file)) {
 			$foto=basename( $_FILES["perfil"]["name"]);
-        echo "The file ".$foto." has been uploaded.";
+        echo  "The file ".$foto." has been uploaded.";
 				// echo '<script type="text/javascript">alert("La foto se ha subido correctamente");</script>';
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        $mensaje =  "Sorry, there was an error uploading your file: ".$error;
 				// echo '<script type="text/javascript">alert("La foto no se ha subido correctamente");</script>';
 
     }
@@ -124,7 +130,8 @@ $proyecto_actualDB="";
 
 
 		require "../conexion.php";
-		$consulta = mysqli_query($conn,"select identidad from ficha where identidad='".$identidad."'")or die(mysqli_error($conn));
+		$consulta = mysqli_query($conn,"select identidad from ficha where
+		identidad='".$identidad."'")or die(mysqli_error($conn));
 		$id = mysqli_num_rows($consulta);
 		if ($id==0){
 
@@ -133,7 +140,14 @@ values('".$identidad."','".$nombre."','".$fecha_nacimiento."','".$lugar_nacimien
 .$ocupacion_madre."','".$categoria_madre."','".$nombre_padre."','".$telefono_padre."','".$ocupacion_padre."','".$categoria_padre."','".$vive_padres."','".$encargado."','".$numero_hermanos."','".$lugar_que_ocupa."','".$tipo_vivienda."','".$piso_de."','".$religion."','".$foto."')") or die(mysqli_error($conn));
 
 			echo '<script type="text/javascript">alert("Ficha Guardada");</script>';
-			echo "<script>window.location = '../../detalleFicha.php?id=".$identidad."'</script>";
+			if($mensaje){
+				echo '<script type="text/javascript">alert("'.$mensaje.'");</script>';
+
+			}
+
+			echo "<script>
+			 window.location = '../../detalleFicha.php?id=".$identidad."'
+			</script>";
 		}
 		else {
 			echo '<script type="text/javascript">alert("El No. de identidad ya se encuentra registrado");</script>';

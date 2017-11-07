@@ -95,32 +95,44 @@ include 'include/head.inc';
 
                   </div>
                   <label for="identidad">* Numero de identidad</label>
-                <input class="form-control" maxlength="13" required="required" type="text" name="identidad" placeholder="" onkeypress="return soloNumero(event)"/>
+                <input class="form-control" maxlength="13" required="required"
+                type="text" name="identidad" placeholder=""
+                onkeypress="return soloNumero(event)"
+                value="<?php echo $Ficha['identidad'] ?>"/>
                 </div>
                 <div class="form-group">
                   <label for="nombre">* Nombre y Apellidos</label>
-                  <input  type="text"   name="nombre" maxlength="40" required="required" class="form-control"/>
+                  <input  type="text"   name="nombre" maxlength="40"
+                  value="<?php echo $Ficha['nombre'] ?>"
+                  required="required" class="form-control"/>
                 </div>
 
                 <div class="col-xs-6">
                   <label for="fecha_nacimiento">* Fecha de nacimiento</label>
                   <div class="input-group">
-                    <input onBlur="getAge()" class="form-control" type="text" name="fecha_nacimiento" id="fecha_nacimiento" required="required"/>
+                    <input onBlur="getAge()" class="form-control" type="text"
+                     name="fecha_nacimiento" id="fecha_nacimiento" required="required"
+                     value="<?php echo $Ficha['fecha_nacimiento'] ?>"
+                     />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                   </div>
                 </div>
                 <div class="col-xs-6">
                   <label for="edad">* Edad</label>
-                  <input readonly="readonly" type="number" min="1" max="99" required="required" id="edad" name="edad" class="form-control"/>
+                  <input readonly="readonly" type="number" min="1" max="99"
+                  required="required" id="edad" name="edad" class="form-control"/>
                 </div>
                 <div class="form-group">
                   <label for="lugar_nacimiento">* Lugar de Nacimiento</label>
-                  <input type="text" maxlength="39"  required="required" name="lugar_nacimiento" class="form-control" />
+                  <input type="text" maxlength="39"  required="required"
+                  name="lugar_nacimiento" class="form-control"
+                  value="<?php echo $Ficha['lugar_nacimiento'] ?>" />
                 </div>
 
                 <div class="form-group">
                   <label for="sexo">* Sexo</label>
-                  <select name="sexo" required="required"  class="form-control">
+                  <select name="sexo" required="required"  class="form-control"
+                  value="<?php echo $Ficha['sexo'] ?>">
                     <option selected="selected">
                     <option>Masculino</option>
                     <option>Femenino</option>
@@ -129,7 +141,10 @@ include 'include/head.inc';
 
                 <div class="form-group">
                   <label for="direccion">* Dirección</label>
-                  <input  type="text"   name="direccion" maxlength="100" required="required" class="form-control"/>
+                  <input  type="text"   name="direccion" maxlength="100"
+                  required="required" class="form-control"
+                  value="<?php echo $Ficha['direccion'] ?>"
+                  />
                 </div>
 
                 <div class="form-group">

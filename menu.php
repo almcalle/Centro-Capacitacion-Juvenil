@@ -62,7 +62,7 @@ include 'include/menu.inc';
                         title="Ver Ficha"></a>
                        &nbsp;&nbsp;&nbsp;
 
-                       <a href="javascript:borrarFicha('.$registro['id'].');"
+                       <a href="javascript:borrarFicha('.$registro['identidad'].');"
                         class="glyphicon glyphicon-trash"
                         data-toggle="tooltip" title="Borrar ficha"></a>
                         &nbsp;&nbsp;&nbsp;
@@ -76,16 +76,17 @@ include 'include/menu.inc';
       </section><!-- right col -->
       </div>
       </div><!-- ./wrapper -->
-<?php
+      <div id="agregar-html-borrado"></div>
 
+<?php
 include 'include/scripts.inc';
 include 'include/plugins.inc';
 ?>
 
 <script src = "js/jquery.dataTables.js" type="text/javascript"></script>
-<div id="agregar-html-borrado"></div>
 <script type="text/javascript">
     function borrarFicha(id){
+      debugger;
 		var url = 'php/borrarFicha.php';
 		var pregunta = confirm('¿Esta seguro de eliminar la ficha?');
 		if(pregunta==true){
@@ -104,11 +105,18 @@ include 'include/plugins.inc';
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#tabla').DataTable();
+    $('#tabla').DataTable( {
+        "language": {
+            //  "lengthMenu": "Display _MENU_ records per page",
+             "zeroRecords": "No hay datos en la base de datos",
+             // hay un total de X resultados del total de Y miembros de la base de datos
+             "info": "Hay un total de _TOTAL_ resultados del total de _MAX_ miembros de la base de datos",
+              "infoEmpty": "No hay datos en la base de datos",
+             "infoFiltered": ""
+        }
+    } );
 } );
 </script>
 <?php
-
-include 'include/plugins.inc';
 include 'include/fin.inc';
 ?>

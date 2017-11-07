@@ -37,7 +37,8 @@ if ($reg==0) {
     echo"
     <div class=\"col-lg-12\">
     <div class=\"alert alert-block alert-info\">
-	<h4>¡Lo sentimos!</h4>El Registro con ID ".$identidad." no fue encontrado. <a href='nuevaFicha.php'>¿Registrar una nueva ficha?</a>
+	<h4>¡Lo sentimos!</h4>El Registro con ID ".$identidad." no fue encontrado.
+   <a href='nuevaFicha.php'>¿Registrar una nueva ficha?</a>
 	</div></div>";
 }
 else {
@@ -70,15 +71,9 @@ else {
 </div> <!-- fin <div class="box-header with-border"> -->
 
   <div class="box-body">
-
 	<br/>
-
-
-
       <dt>Numero de identidad:</dt>
       <dd><?php echo $identidad; ?></dd>
-
-
         <dt>Nombre y Apellidos:</dt>
         <dd><?php echo $Ficha['nombre']; ?></dd>
         <dt>Fecha de Nacimiento:</dt>
@@ -208,15 +203,19 @@ else {
   </div> <!-- fin <div class="col-lg-12"> aplicado a datos familiares-->
 
 
-
-<a class="btn btn-danger btn-flat pull-right" href="javascript:borrarFicha(<?php echo $identidad; ?>);">Borrar Ficha
+<div class="not-printable">
+<a class="btn btn-danger btn-flat pull-right"
+href="javascript:borrarFicha(<?php echo $identidad; ?>);">Borrar Ficha
 </a>
-<a class="btn btn-warning btn-flat pull-right" href="editarFicha.php?id=<?php echo $identidad; ?>">Editar Ficha
+<a class="btn btn-warning btn-flat pull-right"
+href="editarFicha.php?id=<?php echo $identidad; ?>">Editar Ficha
 </a>
 
-<a class="btn btn-success btn-flat pull-right" href='javascript:print(); void 0;'>Imprimir Ficha
-</a>
+</div>
 
+<a class="btn btn-success btn-flat pull-right"
+href='javascript:print(); void 0;'>Imprimir Ficha
+</a>
 
 
 
